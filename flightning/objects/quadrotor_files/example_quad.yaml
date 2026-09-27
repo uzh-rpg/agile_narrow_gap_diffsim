@@ -1,0 +1,46 @@
+name:               "example_quad"
+mass:               0.600                    # [kg]
+tbm_fr:             [ 0.075, -0.10, 0.0]          # [m]
+tbm_bl:             [-0.075,  0.10, 0.0]         # [m]
+tbm_br:             [-0.075, -0.10, 0.0]         # [m]
+tbm_fl:             [ 0.075,  0.10, 0.0]          # [m]
+inertia:            [0.002284, 0.001650, 0.003688]     # [kgm^2]
+motor_omega_min:    150.0                     # [rad/s]
+motor_omega_max:    2800.0                    # [rad/s]
+motor_tau:          0.033                     # [s]
+motor_inertia:      5.640e-6                 # [kgm^2]
+omega_max:          [4.0, 4.0, 3.0]         # [rad/s]
+
+thrust_map:         [1.562522e-6, 0.0,  0.0]
+kappa:              0.011250                    # [Nm/N]
+thrust_min:         0.0                       # [N]
+thrust_max:         8.5                      # [N] per motor
+rotors_config:      "cross"
+
+aero_coeff_1:       [0.26, 0.28, 0.42] # [0.26, 0.28, 0.42] # [N/(v/m)]
+aero_coeff_3:       [0.0, 0.0, 0.0] # [N/(v/m)]
+aero_coeff_h:        0.01            # 0.01 [N/(v^2/m^2)]
+
+# name:               "example_quad"
+# mass:               0.600                    # [kg]
+# tbm_fr:             [ 0.075, -0.10, 0.0]          # [m]
+# tbm_bl:             [-0.075,  0.10, 0.0]         # [m]
+# tbm_br:             [-0.075, -0.10, 0.0]         # [m]
+# tbm_fl:             [ 0.075,  0.10, 0.0]          # [m]
+# inertia:            [0.002410, 0.001800, 0.003759]     # [kgm^2]
+# motor_omega_min:    150.0                     # [rad/s]
+# motor_omega_max:    2800.0                    # [rad/s]
+# motor_tau:          0.033                     # [s]
+# motor_inertia:      5.640e-6                 # [kgm^2]
+# omega_max:          [10.0, 10.0, 6.0]         # [rad/s]
+
+# thrust_map:         [1.562522e-6, 0.0,  0.0]
+# kappa:              0.011                    # [Nm/N]
+# thrust_min:         0.0                       # [N]
+# thrust_max:         8.5                      # [N] per motor
+# rotors_config:      "cross"
+
+# aero_coeff_1:       [0.26, 0.28, 0.42] # [0.26, 0.28, 0.42] # [N/(v/m)]
+# aero_coeff_3:       [0.0, 0.0, 0.0] # [N/(v/m)]
+# aero_coeff_h:        0.01            # 0.01 [N/(v^2/m^2)]
+

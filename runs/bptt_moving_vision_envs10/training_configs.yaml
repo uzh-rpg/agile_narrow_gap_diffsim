@@ -1,0 +1,270 @@
+# =============================================================================
+# Training configurations for gap crossing environments
+# 8 groups: {static,moving} x {state,vision} x {bptt,ppo}
+# =============================================================================
+
+# ----- Reward weights per algorithm -----
+# Nested under bptt / ppo so each algorithm can have independent tuning.
+
+reward_weights:
+  bptt:
+    static_state:
+      smoothness_weight: 0.0
+      action_penalty_weight: 0.5
+      vel_norm_penalty_weight: 0.0
+      vel_penalty_weight: 0.1
+      omega_penalty_weight: 0.1
+      acc_penalty_weight: 0.1
+      progress_weight: 0.7
+      centering_weight: 3.0
+      near_gap_centering_weight: 3.0
+      alignment_weight: 3.0
+      collision_weight: 18.0
+      camera_alignment_weight: 0.0
+
+    static_vision:
+      smoothness_weight: 0.0
+      action_penalty_weight: 0.5
+      vel_penalty_weight: 0.1
+      omega_penalty_weight: 0.1
+      acc_penalty_weight: 0.1
+      progress_weight: 0.7
+      centering_weight: 6.0
+      near_gap_centering_weight: 5.0
+      alignment_weight: 3.0
+      collision_weight: 22.0
+      camera_alignment_weight: 0.7
+
+    moving_state:
+      smoothness_weight: 0.0
+      action_penalty_weight: 0.5
+      vel_norm_penalty_weight: 0.0
+      vel_penalty_weight: 0.1
+      omega_penalty_weight: 0.1
+      acc_penalty_weight: 0.1
+      progress_weight: 0.5
+      centering_weight: 3.0
+      near_gap_centering_weight: 5.0
+      alignment_weight: 6.0
+      collision_weight: 27.0
+      camera_alignment_weight: 0.0
+
+    moving_vision:
+      smoothness_weight: 0.0
+      action_penalty_weight: 0.5
+      vel_penalty_weight: 0.1
+      omega_penalty_weight: 0.1
+      acc_penalty_weight: 0.1
+      progress_weight: 0.5
+      centering_weight: 5.0
+      near_gap_centering_weight: 5.0
+      alignment_weight: 6.0
+      collision_weight: 30.0
+      camera_alignment_weight: 0.7
+
+  ppo:
+    static_state:
+      smoothness_weight: 0.0
+      action_penalty_weight: 0.5
+      vel_norm_penalty_weight: 0.0
+      vel_penalty_weight: 0.1
+      omega_penalty_weight: 0.1
+      acc_penalty_weight: 0.1
+      progress_weight: 0.5
+      centering_weight: 6.0
+      near_gap_centering_weight: 3.0
+      alignment_weight: 2.0
+      collision_weight: 18.0
+      camera_alignment_weight: 0.0
+
+    static_vision:
+      smoothness_weight: 0.0
+      action_penalty_weight: 0.5
+      vel_penalty_weight: 0.1
+      omega_penalty_weight: 0.1
+      acc_penalty_weight: 0.1
+      progress_weight: 0.7
+      centering_weight: 6.0
+      near_gap_centering_weight: 5.0
+      alignment_weight: 3.0
+      collision_weight: 24.0
+      camera_alignment_weight: 0.7
+
+    moving_state:
+      smoothness_weight: 0.0
+      action_penalty_weight: 0.5
+      vel_norm_penalty_weight: 0.0
+      vel_penalty_weight: 0.1
+      omega_penalty_weight: 0.1
+      acc_penalty_weight: 0.1
+      progress_weight: 0.5
+      centering_weight: 3.0
+      near_gap_centering_weight: 0.0
+      alignment_weight: 8.0
+      collision_weight: 0.0
+      camera_alignment_weight: 0.0
+
+    moving_vision:
+      smoothness_weight: 0.0
+      action_penalty_weight: 0.5
+      vel_penalty_weight: 0.1
+      omega_penalty_weight: 0.1
+      acc_penalty_weight: 0.1
+      progress_weight: 0.5
+      centering_weight: 5.0
+      near_gap_centering_weight: 5.0
+      alignment_weight: 6.0
+      collision_weight: 30.0
+      camera_alignment_weight: 0.7
+
+# ----- Training hyperparameters -----
+
+training:
+  # --- BPTT (differentiable simulation) ---
+  bptt:
+    static_state:
+      hidden_dims: [512, 512]
+      initial_scale: 0.01
+      lr_init: 1.0e-3
+      lr_peak: 1.0e-2
+      lr_warmup_steps: 1
+      lr_decay_steps: 800
+      lr_end: 5.0e-4
+      checkpoint_interval: 500
+
+    static_vision:
+      hidden_dims: [1024, 1024]
+      initial_scale: 0.01
+      lr_init: 1.0e-3
+      lr_peak: 5.0e-4
+      lr_warmup_steps: 1
+      lr_decay_steps: 2000
+      lr_end: 5.0e-5
+      checkpoint_interval: 500
+
+    moving_state:
+      hidden_dims: [512, 512]
+      initial_scale: 0.01
+      lr_init: 1.0e-3
+      lr_peak: 1.0e-2
+      lr_warmup_steps: 1
+      lr_decay_steps: 800
+      lr_end: 5.0e-4
+      checkpoint_interval: 500
+
+    moving_vision:
+      hidden_dims: [1024, 1024]
+      initial_scale: 0.01
+      lr_init: 1.0e-3
+      lr_peak: 5.0e-4
+      lr_warmup_steps: 1
+      lr_decay_steps: 2000
+      lr_end: 5.0e-5
+      checkpoint_interval: 500
+
+  # --- PPO ---
+  ppo:
+    static_state:
+      hidden_dims: [512, 512]
+      initial_log_std: 0.0   # log(1.0)
+      lr_init: 1.0e-4
+      lr_peak: 2.0e-4
+      lr_warmup_steps: 500
+      lr_end: 1.0e-5
+      max_grad_norm: 1.0
+      # PPO-specific
+      num_minibatches: 20
+      ent_coef: 0.01
+      gamma: 0.99
+      gae_lambda: 0.95
+      update_epochs: 4
+      clip_eps: 0.1
+      vf_coef: 0.5
+      checkpoint_interval: 500
+      # Curriculum learning: [start_value, end_value]
+      curriculum_enabled: true
+      curriculum_start_epoch: 500
+      curriculum_final_epoch: 2500
+      curriculum_weights:
+        collision_weight: [0.0, 18.0]
+        near_gap_centering_weight: [0.0, 3.0]
+        centering_weight: [3.0, 3.0]
+        alignment_weight: [3.0, 3.0]       # fixed
+
+    static_vision:
+      hidden_dims: [1024, 1024]
+      initial_log_std: 0.0
+      lr_init: 1.0e-4
+      lr_peak: 3.0e-4
+      lr_warmup_steps: 500
+      lr_end: 1.0e-5
+      max_grad_norm: 1.0
+      num_minibatches: 20
+      ent_coef: 0.02
+      gamma: 0.99
+      gae_lambda: 0.95
+      update_epochs: 4
+      clip_eps: 0.2
+      vf_coef: 0.5
+      checkpoint_interval: 1000
+      # Curriculum learning: [start_value, end_value]
+      curriculum_enabled: true
+      curriculum_start_epoch: 2000
+      curriculum_final_epoch: 6000
+      curriculum_weights:
+        collision_weight: [0.0, 24.0]
+        near_gap_centering_weight: [0.0, 5.0]
+        centering_weight: [3.0, 6.0]
+        alignment_weight: [3.0, 3.0]       # fixed
+
+    moving_state:
+      hidden_dims: [512, 512]
+      initial_log_std: 0.0
+      lr_init: 1.0e-4
+      lr_peak: 3.0e-4
+      lr_warmup_steps: 500
+      lr_end: 1.0e-5
+      max_grad_norm: 1.0
+      num_minibatches: 20
+      ent_coef: 0.02
+      gamma: 0.99
+      gae_lambda: 0.95
+      update_epochs: 4
+      clip_eps: 0.2
+      vf_coef: 0.5
+      checkpoint_interval: 500
+      # Curriculum learning: [start_value, end_value]
+      curriculum_enabled: true
+      curriculum_start_epoch: 2000
+      curriculum_final_epoch: 6000
+      curriculum_weights:
+        collision_weight: [0.0, 70.0]
+        near_gap_centering_weight: [0.0, 25.0]
+        centering_weight: [3.0, 6.0]
+        alignment_weight: [8.0, 8.0]       # fixed
+
+    moving_vision:
+      hidden_dims: [1024, 1024]
+      initial_log_std: 0.0
+      lr_init: 1.0e-4
+      lr_peak: 3.0e-4
+      lr_warmup_steps: 500
+      lr_end: 1.0e-5
+      max_grad_norm: 1.0
+      num_minibatches: 20
+      ent_coef: 0.02
+      gamma: 0.99
+      gae_lambda: 0.95
+      update_epochs: 4
+      clip_eps: 0.2
+      vf_coef: 0.5
+      checkpoint_interval: 1000
+      # Curriculum learning: [start_value, end_value]
+      curriculum_enabled: true
+      curriculum_start_epoch: 2000
+      curriculum_final_epoch: 6000
+      curriculum_weights:
+        collision_weight: [0.0, 70.0]
+        near_gap_centering_weight: [0.0, 25.0]
+        centering_weight: [3.0, 6.0]
+        alignment_weight: [8.0, 8.0]       # fixed

@@ -1,0 +1,169 @@
+============================================================
+[2026-06-30 19:10:51] evaluate_all.sh started
+  log: evaluate_all.out
+============================================================
+============================================================
+[2026-06-30 19:10:51] Evaluating: bptt static_state
+  checkpoint: runs/bptt_static_state_envs100/checkpoints/checkpoint_20000
+  rollouts:   1000
+============================================================
+WARNING:absl:Tensorflow library not found, tensorflow.io.gfile operations will use native shim calls. GCS paths (i.e. 'gs://...') cannot be accessed.
+WARNING:absl:The transformations API will eventually be replaced by an upgraded design. The current API will not be removed until this point, but it will no longer be actively worked on.
+============================================================
+EVALUATION  algo=bptt  moving=False  vision=False
+checkpoint:  /home/b-rbianco/AcrobaticDroneFlight/runs/bptt_static_state_envs100/checkpoints/checkpoint_20000
+rollouts:    1000   seed: 0
+env class:   StaticGapStateEnv
+============================================================
+[StaticGapStateEnv] Loaded reward weights: bptt/static_state
+[BPTT] Loaded training config: bptt/static_state
+[BPTT] Loaded training config: bptt/static_state
+Loading checkpoint 20000 from /home/b-rbianco/AcrobaticDroneFlight/runs/bptt_static_state_envs100/checkpoints
+[StaticGapStateEnv] Loaded reward weights: bptt/static_state
+
+[eval] running 1000 rollouts...
+
+================================================================================
+GAP CROSSING STATISTICS [Elapsed: 21.4s]
+================================================================================
+[SUCCESS RATE]: 100.00% (no collision)
+Gap crossing rate: 100.00% - num trajs: 1000
+Gap plane crossing rate: 100.00% - num trajs: 1000
+Average final distance to goal: 15.2 cm
+Average crossing distance from gap center: 1.0 cm
+Average crossing distance u-axis: 0.8 cm
+Average crossing distance v-axis: 0.4 cm
+Average crossing orientation errors - Roll: 4.24°, Pitch: 1.74°, Yaw: 2.17°
+================================================================================
+
+[viz] saved gap-crossing 2D plot -> /home/b-rbianco/AcrobaticDroneFlight/runs/bptt_static_state_envs100/plots/bptt_static_state_gap_crossing_2d.png
+[skip] bbox heatmap (--no-heatmap)
+
+[done] plots saved under: /home/b-rbianco/AcrobaticDroneFlight/runs/bptt_static_state_envs100/plots
+
+============================================================
+[2026-06-30 19:11:47] Evaluating: bptt moving_state
+  checkpoint: runs/bptt_moving_state_envs100/checkpoints/checkpoint_20000
+  rollouts:   1000
+============================================================
+WARNING:absl:Tensorflow library not found, tensorflow.io.gfile operations will use native shim calls. GCS paths (i.e. 'gs://...') cannot be accessed.
+WARNING:absl:The transformations API will eventually be replaced by an upgraded design. The current API will not be removed until this point, but it will no longer be actively worked on.
+============================================================
+EVALUATION  algo=bptt  moving=True  vision=False
+checkpoint:  /home/b-rbianco/AcrobaticDroneFlight/runs/bptt_moving_state_envs100/checkpoints/checkpoint_20000
+rollouts:    1000   seed: 0
+env class:   MovingGapStateEnv
+============================================================
+[MovingGapStateEnv] Loaded reward weights: bptt/static_state
+[MovingGapStateEnv] Loaded reward weights: bptt/moving_state
+[BPTT] Loaded training config: bptt/moving_state
+[BPTT] Loaded training config: bptt/moving_state
+Loading checkpoint 20000 from /home/b-rbianco/AcrobaticDroneFlight/runs/bptt_moving_state_envs100/checkpoints
+[MovingGapStateEnv] Loaded reward weights: bptt/static_state
+[MovingGapStateEnv] Loaded reward weights: bptt/moving_state
+
+[eval] running 1000 rollouts...
+
+================================================================================
+GAP CROSSING STATISTICS [Elapsed: 22.2s]
+================================================================================
+[SUCCESS RATE]: 100.00% (no collision)
+Gap crossing rate: 100.00% - num trajs: 1000
+Gap plane crossing rate: 100.00% - num trajs: 1000
+Average final distance to goal: 17.5 cm
+Average crossing distance from gap center: 2.4 cm
+Average crossing distance u-axis: 2.2 cm
+Average crossing distance v-axis: 0.6 cm
+Average crossing orientation errors - Roll: 2.07°, Pitch: 1.39°, Yaw: 1.29°
+================================================================================
+
+[viz] saved gap-crossing 2D plot -> /home/b-rbianco/AcrobaticDroneFlight/runs/bptt_moving_state_envs100/plots/bptt_moving_state_gap_crossing_2d.png
+[skip] bbox heatmap (--no-heatmap)
+
+[done] plots saved under: /home/b-rbianco/AcrobaticDroneFlight/runs/bptt_moving_state_envs100/plots
+
+============================================================
+[2026-06-30 19:12:44] Evaluating: bptt static_vision
+  checkpoint: runs/bptt_static_vision_envs100/checkpoints/checkpoint_20000
+  rollouts:   1000
+============================================================
+WARNING:absl:Tensorflow library not found, tensorflow.io.gfile operations will use native shim calls. GCS paths (i.e. 'gs://...') cannot be accessed.
+WARNING:absl:The transformations API will eventually be replaced by an upgraded design. The current API will not be removed until this point, but it will no longer be actively worked on.
+============================================================
+EVALUATION  algo=bptt  moving=False  vision=True
+checkpoint:  /home/b-rbianco/AcrobaticDroneFlight/runs/bptt_static_vision_envs100/checkpoints/checkpoint_20000
+rollouts:    1000   seed: 0
+env class:   StaticGapVisionEnv
+============================================================
+[StaticGapVisionEnv] Loaded reward weights: bptt/static_state
+[StaticGapVisionEnv] Loaded reward weights: bptt/static_vision
+[BPTT] Loaded training config: bptt/static_vision
+[BPTT] Loaded training config: bptt/static_vision
+Loading checkpoint 20000 from /home/b-rbianco/AcrobaticDroneFlight/runs/bptt_static_vision_envs100/checkpoints
+[StaticGapVisionEnv] Loaded reward weights: bptt/static_state
+[StaticGapVisionEnv] Loaded reward weights: bptt/static_vision
+
+[eval] running 1000 rollouts...
+
+================================================================================
+GAP CROSSING STATISTICS [Elapsed: 25.2s]
+================================================================================
+[SUCCESS RATE]: 98.90% (no collision)
+Gap crossing rate: 100.00% - num trajs: 1000
+Gap plane crossing rate: 100.00% - num trajs: 1000
+Average final distance to goal: 42.5 cm
+Average crossing distance from gap center: 2.4 cm
+Average crossing distance u-axis: 2.0 cm
+Average crossing distance v-axis: 0.9 cm
+Average crossing orientation errors - Roll: 6.96°, Pitch: 3.59°, Yaw: 10.30°
+================================================================================
+
+[viz] saved gap-crossing 2D plot -> /home/b-rbianco/AcrobaticDroneFlight/runs/bptt_static_vision_envs100/plots/bptt_static_vision_gap_crossing_2d.png
+[viz] saved bbox heatmap -> /home/b-rbianco/AcrobaticDroneFlight/runs/bptt_static_vision_envs100/plots/bptt_static_vision_bbox_heatmap.png
+
+[done] plots saved under: /home/b-rbianco/AcrobaticDroneFlight/runs/bptt_static_vision_envs100/plots
+
+============================================================
+[2026-06-30 19:14:14] Evaluating: bptt moving_vision
+  checkpoint: runs/bptt_moving_vision_envs100/checkpoints/checkpoint_19000
+  rollouts:   1000
+============================================================
+WARNING:absl:Tensorflow library not found, tensorflow.io.gfile operations will use native shim calls. GCS paths (i.e. 'gs://...') cannot be accessed.
+WARNING:absl:The transformations API will eventually be replaced by an upgraded design. The current API will not be removed until this point, but it will no longer be actively worked on.
+============================================================
+EVALUATION  algo=bptt  moving=True  vision=True
+checkpoint:  /home/b-rbianco/AcrobaticDroneFlight/runs/bptt_moving_vision_envs100/checkpoints/checkpoint_19000
+rollouts:    1000   seed: 0
+env class:   MovingGapVisionEnv
+============================================================
+[MovingGapVisionEnv] Loaded reward weights: bptt/static_state
+[MovingGapVisionEnv] Loaded reward weights: bptt/moving_state
+[MovingGapVisionEnv] Loaded reward weights: bptt/moving_vision
+[BPTT] Loaded training config: bptt/moving_vision
+[BPTT] Loaded training config: bptt/moving_vision
+Loading checkpoint 19000 from /home/b-rbianco/AcrobaticDroneFlight/runs/bptt_moving_vision_envs100/checkpoints
+[MovingGapVisionEnv] Loaded reward weights: bptt/static_state
+[MovingGapVisionEnv] Loaded reward weights: bptt/moving_state
+[MovingGapVisionEnv] Loaded reward weights: bptt/moving_vision
+
+[eval] running 1000 rollouts...
+
+================================================================================
+GAP CROSSING STATISTICS [Elapsed: 26.2s]
+================================================================================
+[SUCCESS RATE]: 99.30% (no collision)
+Gap crossing rate: 99.90% - num trajs: 1000
+Gap plane crossing rate: 100.00% - num trajs: 1000
+Average final distance to goal: 144.5 cm
+Average crossing distance from gap center: 2.3 cm
+Average crossing distance u-axis: 1.8 cm
+Average crossing distance v-axis: 1.0 cm
+Average crossing orientation errors - Roll: 3.38°, Pitch: 2.31°, Yaw: 3.00°
+================================================================================
+
+[viz] saved gap-crossing 2D plot -> /home/b-rbianco/AcrobaticDroneFlight/runs/bptt_moving_vision_envs100/plots/bptt_moving_vision_gap_crossing_2d.png
+[viz] saved bbox heatmap -> /home/b-rbianco/AcrobaticDroneFlight/runs/bptt_moving_vision_envs100/plots/bptt_moving_vision_bbox_heatmap.png
+
+[done] plots saved under: /home/b-rbianco/AcrobaticDroneFlight/runs/bptt_moving_vision_envs100/plots
+
+All evaluations completed.
