@@ -1,13 +1,13 @@
 <div align="center">
 
-# Learning Visuomotor Quadrotor Flight Through Dynamic Narrow Gaps
+# Learning Visuomotor Quadrotor Flight Through Dynamic Narrow Gaps via Differentiable Simulation
 
 [Riccardo Bianco](linkedin.com/in/riccardo-bianco-2a0657297)\* &nbsp;·&nbsp;
 [Yunfan Ren](https://renyunfan.github.io/)\* &nbsp;·&nbsp;
 [Jiaxu Xing](https://jiaxux.ing/) &nbsp;·&nbsp;
 [Davide Scaramuzza](https://rpg.ifi.uzh.ch/people_scaramuzza.html)
 
-*Robotics and Perception Group, University of Zürich*
+*Robotics and Perception Group, University of Zurich*
 
 <sub>\* Equal contribution</sub>
 
@@ -18,7 +18,7 @@
 > A differentiable simulation framework that learns to thread a quadrotor through a **moving narrow gap** from onboard vision and inertial measurements alone — no teacher, no planner, no distillation. Policies train from scratch to a **99.3 %** success rate in simulation within **minutes on a single GPU**, and transfer zero-shot to a real quadrotor.
 
 <p align="center">
-  <a href="https://youtu.be/I72C1Jdeluw">
+  <a href="https://youtu.be/z-txORkhnrg">
     <img src="figs/teaser_yt.png" alt="Learning Visuomotor Quadrotor Flight Through Dynamic Narrow Gaps" width="900"/>
   </a>
 </p>
