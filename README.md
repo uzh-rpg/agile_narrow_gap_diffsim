@@ -29,7 +29,7 @@ If you find our work and/or code useful, please cite our paper:
 
 ```bibtex
 @inproceedings{bianco2026visuomotor,
-  title     = {Learning Visuomotor Quadrotor Flight Through Dynamic Narrow Gaps},
+  title     = {Learning Visuomotor Quadrotor Flight Through Dynamic Narrow Gaps via Differentiable Simulation},
   author    = {Bianco, Riccardo and Ren, Yunfan and Xing, Jiaxu and Scaramuzza, Davide},
   booktitle = {Conference on Robot Learning (CoRL)},
   year      = {2026}
